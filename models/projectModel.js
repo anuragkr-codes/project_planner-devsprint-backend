@@ -18,7 +18,7 @@ const projectSchema = new mongoose.Schema({
   endDate: { type: Date, required: false },
   deadline: { type: Date, required: false },
 
-  tasks: [taskSchema],
+  tasks: { type: [taskSchema] },
 });
 
 const Project = mongoose.model("Project", projectSchema);
