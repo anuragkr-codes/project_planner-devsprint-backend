@@ -6,13 +6,13 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
     const existingUser = await User.findOne({ email: email });
-    console.log(existingUser);
     if (existingUser) {
       const isPasswordValid = await existingUser.verifyPassword(password);
       if (isPasswordValid) {
-        res.status(200).send("Logged in successfully");
+        const userData = { objectID: existingUser };
+        res.status(201).json({ data: userData });
+        console.log("Works");
       } else {
         res.status(400).send("Incorrect Password");
       }

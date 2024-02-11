@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const signupRoute = require("./routes/signupRoute");
 const loginRoute = require("./routes/loginRoute");
+const dashboardRoute = require("./routes/dashboardRoute");
+const projectRoute = require("./routes/projectRoute");
 
 const app = express();
 const port = 3000;
@@ -38,6 +40,8 @@ app.get("/", (req, res) => {
 
 app.use("/signup", signupRoute);
 app.use("/login", loginRoute);
+app.use("/project", projectRoute);
+app.use("/dashboard", dashboardRoute);
 
 app.listen(port, () => {
   console.log("Server is running on port ", port, " :) ");
