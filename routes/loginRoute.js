@@ -10,8 +10,8 @@ router.post("/", async (req, res) => {
     if (existingUser) {
       const isPasswordValid = await existingUser.verifyPassword(password);
       if (isPasswordValid) {
-        const userData = { objectID: existingUser };
-        res.status(201).json({ data: userData });
+        // const userData = { objectID: existingUser };
+        res.status(200).json({ user: existingUser });
         console.log("Works");
       } else {
         res.status(400).send("Incorrect Password");
